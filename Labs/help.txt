@@ -1,0 +1,131 @@
+SELECT left(name,10), continent
+FROM country;
+
+SELECT  DISTINCT(уникальный) continent AS Континент(псевдоним)
+FROM country;
+
+SELECT left(name,10), population
+FROM country
+LIMIT(ограничение) 10;
+
+SELECT left(name,10), population
+FROM country
+LIMIT(2,5); пропусти 2 записи и покажи 5 после них;
+
+SELECT left(name,10), population
+FROM country
+LIMIT 5 OFFSET 2; пропусти 2 записи и покажи 5 после них;
+
+SELECT code, left(name,10)
+FROM country
+WHERE code='AFG';
+
+SELECT code, left(name,10)
+FROM country
+WHERE population >=1e7;
+
+SELECT code, left(name,10)
+FROM country
+WHERE population BETWEEN 1e7 and 1e6;
+
+and or;
+
+SELECT code, left(name,10)
+FROM country
+WHERE name LIKE '_os___';
+
+_ -1 символ
+
+%-любое
+
+SELECT name, populations
+FROM country
+WHERE name IN('Name1', 'Name2');
+
+SELECT name, populations
+FROM country
+ORDER BY(сортировать) name DESC(обратный порядок);
+
+rand();
+
+SELECT continents
+FROM county
+GROUP BY continents;
+
+SELECT continents SUM(Population)
+FROM county
+GROUP BY continents;
+
+SELECT continent, regions sum(Population)
+FROM county
+GROUP BY 1, 2 WITH ROLLUP;
+
+SELECT continents SUM(Population)
+FROM county
+HAVING SUM(Population) > 400_000_000
+
+SELECT continents SUM(Population) INTO OUTFILE 'c:/mysql/' (запись в файл)
+FROM county
+HAVING SUM(Population) > 400_000_000
+
+set @foo =1;
+оздать переменную foo;
+
+SELECT @foo;
+
+SELECT SUM(Population) INTO @count
+FROM country;
+
+SELECT @count;
+
+
+INSERT INTO tbl1 (вставка в tbl1)
+VALUES (.....);
+
+now(); -текущее
+
+
+INSERT INTO tbl1 (..param...) (вставка в tbl1)
+VALUES (.....);
+
+SELECT* FROM tabl1;
+
+INSERT IGNORE(игнорирование плохих и встака остальных) INTO tbl1 (..param...) (вставка в tbl1)
+VALUES (.....);
+
+INSERT INTO tbl1 (вставка в tbl1)
+SET paran1='---', paran2='---', paran3='---';
+
+INSERT INTO tbl1 (вставка в tbl1)
+SELECT NULL, user, now(), 'case1'
+FROM mysql.user;
+
+LOAD DATA
+INFILE 'folder'
+INTO TABLE name
+FIELDS TERMINATED by ','
+LINES TERMINATED by '\n';
+
+UPDATE city (обновить)
+SET Population=population+10000
+WHERE id=10;
+
+REPLACE city  (обновить или добавить)
+SET Population=1e45
+WHERE id=10;
+
+DELETE FROM sity
+WHERE id=10;
+
+Агригирущие функции:
+AWG()-среднее значение по набору строк
+count()-кол-во строк    count(*)-все сount(name)-без null
+count(distinct)-кол-во различных видов строк
+MAX() -максимальное
+MIN() - минимальное
+
+пример:
+SELECT AWG(lifetime)
+FROM Country;
+
+RESTRICT -запрет удаления из родителя
